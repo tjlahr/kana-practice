@@ -1,17 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-drawer
+      title="Settings"
+      :visible.sync="drawer"
+      direction="ttb"
+      size="40%">
+      <Controls :settings="controls" />
+    </el-drawer>
+
+    <el-button @click="drawer = true" type="text">Settings</el-button>
+
+    <KanaBlock />
+
+    <hr>
+    <div>Count: {{ controls.count }}</div>
+    <div>Size: {{ controls.size }}</div>
+    <div>Symbols: {{ controls.symbols }}</div>
+    <div>Orientation: {{ controls.orientation }}</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Controls from './components/Controls.vue';
+import KanaBlock from './components/KanaBlock.vue';
+
+const DEFAULT_SETTINGS = {
+  count: 10,
+  size: 14,
+  symbols: 'kana',
+  orientation: 'horizontal',
+};
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    Controls,
+    KanaBlock,
+  },
+  data() {
+    return {
+      controls: DEFAULT_SETTINGS,
+      drawer: false,
+    };
   },
 };
 </script>
@@ -21,8 +51,19 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.el-drawer {
+  padding: 10px;
+}
+
+.el-drawer header {
+  padding: 0px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: inherit;
+  margin-bottom: 25px;
 }
 </style>
