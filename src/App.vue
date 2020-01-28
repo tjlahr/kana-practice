@@ -65,6 +65,14 @@ export default {
       this.characters = kanaGenerator.generateCharacters(this.settings.count, this.settings.symbols).join('');
     },
   },
+  watch: {
+    settings: {
+      deep: true,
+      handler() {
+        this.setCharacters();
+      },
+    },
+  },
   beforeMount() {
     this.setCharacters();
   },
