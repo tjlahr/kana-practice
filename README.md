@@ -1,5 +1,7 @@
 # kana-practice
 
+This is a small app that generates a bunch of random hiragana and katakana characters in order to develop Japanese literacy.
+
 ## Project setup
 ```
 npm install
