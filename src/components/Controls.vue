@@ -2,7 +2,7 @@
   <div class="controls">
     <div class="count">
       {{ settings.count }} characters per panel
-      <el-slider v-model="settings.count"></el-slider>
+      <el-slider v-model="settings.count" :max="maxChars"></el-slider>
     </div>
     <div class="size">
       {{ settings.size }}px large
@@ -25,6 +25,11 @@ export default {
   },
   props: {
     settings: Object,
+  },
+  data() {
+    return {
+      maxChars: 500,
+    };
   },
 };
 </script>
