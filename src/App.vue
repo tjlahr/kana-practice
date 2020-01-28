@@ -9,19 +9,24 @@
       <Controls :settings="settings" />
     </el-drawer>
 
-    <header>
-      <h1>Kana Practice</h1>
+    <header class="app-header">
       <el-button @click="drawer = true" type="text">Settings</el-button>
-      <el-button @click="setCharacters" type="text">Next</el-button>
+      <h1>Kana Practice</h1>
+      <el-button @click="setCharacters" type="primary">Next</el-button>
     </header>
+
+    <el-divider></el-divider>
 
     <KanaBlock :characters="characters" :fontSize="settings.size" />
 
-    <hr>
-    <div>Count: {{ settings.count }}</div>
-    <div>Size: {{ settings.size }}</div>
-    <div>Symbols: {{ settings.symbols }}</div>
-    <div>Orientation: {{ settings.orientation }}</div>
+    <el-divider></el-divider>
+
+    <div class="debug-panel" v-if="debug">
+      <div>Count: {{ settings.count }}</div>
+      <div>Size: {{ settings.size }}</div>
+      <div>Symbols: {{ settings.symbols }}</div>
+      <div>Orientation: {{ settings.orientation }}</div>
+    </div>
   </div>
 </template>
 
@@ -45,9 +50,9 @@ export default {
   },
   data() {
     return {
-      refesh: new Date(),
-      settings: DEFAULT_SETTINGS,
       drawer: false,
+      debug: false,
+      settings: DEFAULT_SETTINGS,
       characters: '',
     };
   },
@@ -68,7 +73,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 25px;
 }
 
 h1 {
@@ -85,5 +90,14 @@ h1 {
   font-weight: bold;
   color: inherit;
   margin-bottom: 25px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-header h1 {
+  margin: 0;
 }
 </style>
