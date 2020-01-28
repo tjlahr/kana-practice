@@ -10,9 +10,9 @@
     </div>
     <div class="symbols">
       <el-radio-group v-model="settings.symbols" size="medium">
-        <el-radio-button label="Hiragana" ></el-radio-button>
-        <el-radio-button label="Katakana"></el-radio-button>
-        <el-radio-button label="Both"></el-radio-button>
+        <el-radio-button label="hiragana">Hiragana</el-radio-button>
+        <el-radio-button label="katakana">Katakana</el-radio-button>
+        <el-radio-button label="kana">Both</el-radio-button>
       </el-radio-group>
     </div>
   </div>

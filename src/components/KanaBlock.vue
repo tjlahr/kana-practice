@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     characters() {
-      return kanaGenerator.generateCharacters(this.settings.count).join('');
+      return kanaGenerator.generateCharacters(this.settings.count, this.settings.symbols).join('');
     },
   },
 };
