@@ -1,10 +1,12 @@
 <template>
-  <div class="kana-block">
-    This is the kana block.
+  <div class="kana-block" v-bind:style="{ fontSize: settings.size + 'px' }">
+    {{ characters }}
   </div>
 </template>
 
 <script>
+import kanaGenerator from '../KanaGenerator';
+
 export default {
   name: 'KanaBlock',
   components: {
@@ -12,19 +14,16 @@ export default {
   props: {
     settings: Object,
   },
+  computed: {
+    characters() {
+      return kanaGenerator.generateCharacters(this.settings.count).join('');
+    },
+  },
 };
 </script>
 
 <style scoped>
-.size {
-  margin-bottom: 20px;
-}
-
-.symbols, .orientation {
-  display: inline-block;
-}
-
-.symbols {
-  margin-right: 10px;
+.kana-block {
+  line-height: 2em;
 }
 </style>

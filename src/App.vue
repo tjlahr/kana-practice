@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <el-drawer
       title="Settings"
       :visible.sync="drawer"
@@ -8,9 +9,12 @@
       <Controls :settings="controls" />
     </el-drawer>
 
-    <el-button @click="drawer = true" type="text">Settings</el-button>
+    <header>
+      <h1>Kana Practice</h1>
+      <el-button @click="drawer = true" type="text">Settings</el-button>
+    </header>
 
-    <KanaBlock />
+    <KanaBlock :settings="controls" />
 
     <hr>
     <div>Count: {{ controls.count }}</div>
@@ -25,8 +29,8 @@ import Controls from './components/Controls.vue';
 import KanaBlock from './components/KanaBlock.vue';
 
 const DEFAULT_SETTINGS = {
-  count: 10,
-  size: 14,
+  count: 75,
+  size: 32,
   symbols: 'kana',
   orientation: 'horizontal',
 };
@@ -53,6 +57,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1 {
+  text-align: center;
 }
 
 .el-drawer {

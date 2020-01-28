@@ -15,12 +15,6 @@
         <el-radio-button label="Both"></el-radio-button>
       </el-radio-group>
     </div>
-    <div class="orientation">
-      <el-radio-group v-model="settings.orientation" size="medium">
-        <el-radio-button label="Horizontal" ></el-radio-button>
-        <el-radio-button label="Vertical"></el-radio-button>
-      </el-radio-group>
-    </div>
   </div>
 </template>
 
