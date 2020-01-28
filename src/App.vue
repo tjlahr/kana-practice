@@ -5,7 +5,7 @@
       title="Settings"
       :visible.sync="drawer"
       direction="ttb"
-      size="40%">
+      size="37%">
       <Controls :settings="settings" />
     </el-drawer>
 
@@ -22,7 +22,8 @@
     <el-divider></el-divider>
 
     <div class="about">
-      <el-link target="_blank" href="https://github.com/tjlahr/kana-practice">tjlahr/kana-practice</el-link>
+      <el-link target="_blank" href="https://github.com/tjlahr/kana-practice">tjlahr/kana-practice</el-link><br/>
+      <el-link target="_blank" href="https://github.com/tjlahr/kana-practice/issues">Have an issue?</el-link>
     </div>
 
     <div class="debug-panel" v-if="debug">
@@ -114,7 +115,7 @@ h1 {
 }
 
 .about {
-  text-align: center;
-  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
