@@ -6,27 +6,29 @@
       :visible.sync="drawer"
       direction="ttb"
       size="40%">
-      <Controls :settings="controls" />
+      <Controls :settings="settings" />
     </el-drawer>
 
     <header>
       <h1>Kana Practice</h1>
       <el-button @click="drawer = true" type="text">Settings</el-button>
+      <el-button @click="setCharacters" type="text">Next</el-button>
     </header>
 
-    <KanaBlock :settings="controls" />
+    <KanaBlock :characters="characters" :fontSize="settings.size" />
 
     <hr>
-    <div>Count: {{ controls.count }}</div>
-    <div>Size: {{ controls.size }}</div>
-    <div>Symbols: {{ controls.symbols }}</div>
-    <div>Orientation: {{ controls.orientation }}</div>
+    <div>Count: {{ settings.count }}</div>
+    <div>Size: {{ settings.size }}</div>
+    <div>Symbols: {{ settings.symbols }}</div>
+    <div>Orientation: {{ settings.orientation }}</div>
   </div>
 </template>
 
 <script>
 import Controls from './components/Controls.vue';
 import KanaBlock from './components/KanaBlock.vue';
+import kanaGenerator from './KanaGenerator';
 
 const DEFAULT_SETTINGS = {
   count: 75,
@@ -43,9 +45,19 @@ export default {
   },
   data() {
     return {
-      controls: DEFAULT_SETTINGS,
+      refesh: new Date(),
+      settings: DEFAULT_SETTINGS,
       drawer: false,
+      characters: '',
     };
+  },
+  methods: {
+    setCharacters() {
+      this.characters = kanaGenerator.generateCharacters(this.settings.count, this.settings.symbols).join('');
+    },
+  },
+  beforeMount() {
+    this.setCharacters();
   },
 };
 </script>
