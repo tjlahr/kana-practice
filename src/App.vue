@@ -40,6 +40,8 @@ import Controls from './components/Controls.vue';
 import KanaBlock from './components/KanaBlock.vue';
 import kanaGenerator from './KanaGenerator';
 
+import { initializeTheme } from './theming';
+
 const DEFAULT_SETTINGS = {
   count: 75,
   size: 32,
@@ -61,6 +63,9 @@ export default {
       characters: '',
     };
   },
+  created() {
+    initializeTheme();
+  },
   methods: {
     setCharacters() {
       this.characters = kanaGenerator.generateCharacters(this.settings.count, this.settings.symbols).join('');
@@ -81,11 +86,24 @@ export default {
 </script>
 
 <style>
+body {
+  background: white;
+  color: #2c3e50;
+}
+
+.theme-dark body {
+  background: black;
+  color: white;
+}
+
+.theme-dark .el-drawer {
+  background: black;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   margin-top: 25px;
 }
 

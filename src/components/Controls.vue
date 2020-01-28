@@ -15,10 +15,18 @@
         <el-radio-button label="kana">Both</el-radio-button>
       </el-radio-group>
     </div>
+    <div class="theme">
+      <el-radio-group v-model="theme" @change="onThemeChange">
+        <el-radio-button label="light">Light</el-radio-button>
+        <el-radio-button label="dark">Dark</el-radio-button>
+      </el-radio-group>
+    </div>
   </div>
 </template>
 
 <script>
+import { getCurrentTheme, setCurrentTheme } from '../theming';
+
 export default {
   name: 'Controls',
   components: {
@@ -29,7 +37,13 @@ export default {
   data() {
     return {
       maxChars: 500,
+      theme: getCurrentTheme(),
     };
+  },
+  methods: {
+    onThemeChange(theme) {
+      setCurrentTheme(theme);
+    },
   },
 };
 </script>
@@ -45,5 +59,6 @@ export default {
 
 .symbols {
   margin-right: 10px;
+  margin-bottom: 20px;
 }
 </style>
