@@ -21,6 +21,10 @@
 
     <el-divider></el-divider>
 
+    <div class="about">
+      <a target="_blank" href="https://github.com/tjlahr/kana-practice">tjlahr/kana-practice</a>
+    </div>
+
     <div class="debug-panel" v-if="debug">
       <div>Count: {{ settings.count }}</div>
       <div>Size: {{ settings.size }}</div>
@@ -99,5 +103,10 @@ h1 {
 
 .app-header h1 {
   margin: 0;
+}
+
+.about {
+  text-align: center;
+  font-size: 10px;
 }
 </style>
