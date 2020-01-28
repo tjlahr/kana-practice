@@ -22,7 +22,7 @@
     <el-divider></el-divider>
 
     <div class="about">
-      <a target="_blank" href="https://github.com/tjlahr/kana-practice">tjlahr/kana-practice</a>
+      <el-link target="_blank" href="https://github.com/tjlahr/kana-practice">tjlahr/kana-practice</el-link>
     </div>
 
     <div class="debug-panel" v-if="debug">
